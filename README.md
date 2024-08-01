@@ -19,6 +19,14 @@ Ensuring data quality and preprocessing for optimal model performance.
 
 Choosing the right model and tuning it to achieve the best possible accuracy.
 
+Data Complexity: Dealing with multiple variables that affect sales
+
+Seasonality and Trends: Accounting for time-based patterns in sales data
+
+Feature Selection: Identifying the most relevant predictors of sales
+
+Model Performance: Achieving high accuracy in sales forecasts
+
 
 Solution
 
