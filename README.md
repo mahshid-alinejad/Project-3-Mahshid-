@@ -5,46 +5,46 @@ Weather Forecasting Project
 
 Overview
 
-This project involves building a weather forecasting model using LSTM (Long Short-Term Memory) networks to predict future temperatures based on historical data. The model has been trained to predict temperatures for various cities, and the results can be accessed through a web interface created with Gradio.
+Weather and temperature is not only an important for individual everyday life, but is also relevant to many other topics such as climate change. Studies from other researchers have shown promising results of using neural networks for predicting and future weather and/or temperature. This project creates a Long Short Term Memory model to predict future temperature. The model takes in historical weather information such as air pressure and temperature and predicts future temperatures. 
 
-Project Components
 
-Data Preparation: Historical temperature data is used to train the LSTM model. Data preprocessing includes handling missing values, creating sequences, and scaling features.
-Model Building: An LSTM model is constructed and tuned using Keras Tuner. Hyperparameters such as the number of units, dropout rates, and learning rates are optimized.
-Prediction: The trained model predicts temperatures for specified cities and dates.
-Gradio Interface: A user-friendly web interface allows users to input a city and a date to get the forecasted temperature.
-Installation
+Introduction
 
-To run this project, ensure you have Python and the following packages installed:
 
-TensorFlow
-Keras Tuner
-Scikit-learn
-Pandas
-NumPy
-Matplotlib
-Gradio
-Install the required packages using pip:
+The original data consists of hourly temperatures for Vancouver spanning 5 years, from 2012 to 2017. To predict the daily temperature for the next 7 days, I resampled the data to daily averages. I then split the dataset into training and testing sets, using an 80/20 split based on time: the first 4 years were used for training, and the last year was used for testing.
 
-bash
-Copy code
-pip install tensorflow keras-tuner scikit-learn pandas numpy matplotlib gradio
-Usage
+I employed an LSTM model to predict the temperature for the following day using the previous 15 days' temperatures as input features. The model was trained on 4 years of data and achieved an R² score of 93%.
 
-Model Training and Tuning
-The model is trained and tuned using a provided script. This script will generate a trained model saved as best_model.h5.
+To forecast the temperature for the next 7 days, the model must be run recursively. This involves predicting the temperature for the next day, then appending the predicted value to the feature set and using it for the subsequent day's prediction. As the model progresses through the 7-day forecast, the quality of predictions deteriorates because each prediction relies on previous predictions rather than actual values. Consequently, this type of model is best suited for short-term forecasts, typically up to a few days ahead.
 
-Gradio Interface
-The Gradio interface allows you to interact with the model. It uses the trained best_model.h5 file to make predictions based on the city and date inputs.
 
-How to Use the Gradio Interface
 
-Input: Select a city from the dropdown menu and enter a date in the format YYYY-MM-DD.
-Output: The forecasted temperature will be displayed in Fahrenheit. The result is constrained to a realistic temperature range.
-Example
 
-If you input "Seattle" and "2025-09-01" into the interface, you will receive a forecasted temperature for that city and date.
 
-Error Handling
-The interface includes checks to ensure that forecasted temperatures fall within a realistic range. If the forecasted temperature is outside this range, an appropriate error message will be displayed.
+
+The temperature values in dataset appear to be in Kelvin rather than Celsius or Fahrenheit. Kelvin is a unit of measurement for temperature where 0 K is absolute zero. 
+
+Cleaned the data and drop all cities and only kept one city,Vancouver and dropped all NANs
+
+converted Kelvin to Celsius: 
+![image](https://github.com/user-attachments/assets/b05c1328-cc51-4d20-8b24-f4aac9d44616)
+
+
+Feature Selection:
+Ensure that the date and hour features are included if they provide relevant information for forecasting. In your sequence creation, you excluded these features for the LSTM input but included them in the labels. This approach can work if you want the model to predict all features, including date and hour.
+Model Output:
+Since your Dense layer outputs 5 features, ensure that this matches your forecasting goals. If you're predicting Vancouver, Vancouver_Celsius, Vancouver_Fahrenheit, date, and hour, ensure the output dimension is appropriate.
+Evaluation:
+After training, evaluate your model on the test set to assess its performance. Consider using metrics like RMSE or MAE in addition to the loss function to get a clearer picture of model accuracy.
+Hyperparameter Tuning:
+You might need to experiment with the number of LSTM units, epochs, batch size, or other hyperparameters to optimize model performance.
+Feature Engineering:
+If you find that the date and hour features do not contribute significantly to the predictions, consider excluding them or transforming them differently.
+
+![Snip20240802_8](https://github.com/user-attachments/assets/dadedc87-d784-4db9-ab03-fe5c0af5d086)
+
+
+
+
+
 
