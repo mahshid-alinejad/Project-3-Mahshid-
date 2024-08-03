@@ -46,21 +46,16 @@ I employed an LSTM model to predict the temperature for the following day using 
 
 To forecast the temperature for the next 7 days, the model must be run recursively. This involves predicting the temperature for the next day, then appending the predicted value to the feature set and using it for the subsequent day's prediction. As the model progresses through the 7-day forecast, the quality of predictions deteriorates because each prediction relies on previous predictions rather than actual values. Consequently, this type of model is best suited for short-term forecasts, typically up to a few days ahead.
 
-### forecasted
- 2017-10-29    14.061722
- 2017-10-30    13.360307
- 2017-10-31    13.184744
- 2017-11-01    13.204847
- 2017-11-02    13.258042
- 2017-11-03    13.332599
- 2017-11-04    13.445753
 
 ![Snip20240803_15](https://github.com/user-attachments/assets/62bb5ded-2802-473c-af29-58f7b90e5154)
 
-  Train MAE: 1.1813127994537354
-  Test MAE: 1.3242559432983398
-  12/12 ━━━━━━━━━━━━━━━━━━━━ 0s 8ms/step
-  Test R^2: 0.9395328618648101
+## Model Performance
+
+The performance of the model was evaluated using Mean Absolute Error (MAE) and R² score. The metrics are as follows:
+
+  - Train Mean Absolute Error (MAE): 1.181
+  - Test Mean Absolute Error (MAE): 1.324
+  - Test R² Score: 0.940
 
 
 ### Gradio Interface
@@ -73,6 +68,14 @@ To use the Gradio interface for temperature forecasting:
   Ensure the Jupyter notebook is running.
   Locate and run the cell containing the Gradio interface setup and launch code.
   Open the provided local URL or public link to access the interface.
+
+## Results
+  The model's forecasted temperatures for a sample period are as follows:
+
+
+![Snip20240803_17](https://github.com/user-attachments/assets/93532876-aafb-4228-b950-cd27563a04f4)
+
+  
 
 
 ## Future Work
