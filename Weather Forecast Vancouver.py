@@ -5,25 +5,30 @@
 
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import numpy as np
 from datetime import datetime as dt
 
-from sklearn.metrics import precision_score, recall_score, f1_score, classification_report, confusion_matrix, accuracy_score
-from sklearn.model_selection import cross_val_score
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+# Preprocessing
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
+# Model Training and Evaluation
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, Input
+from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-from sklearn.metrics import r2_score
 import keras_tuner as kt
+
+# Metrics
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+# Visualization
+import matplotlib.pyplot as plt
+
+# Logging and Debugging
 import logging
 import traceback
-from sklearn.preprocessing import MinMaxScaler
+
 
 
 # In[45]:
@@ -79,7 +84,7 @@ data_cleaned['Vancouver_Celsius'] = data_cleaned['Vancouver'] - 273.15
 # # Convert temperature from Kelvin to Fahrenheit
 # data_cleaned['Vancouver_Fahrenheit'] = (data_cleaned['Vancouver'] - 273.15) * 9/5 + 32
 
-data_cleaned
+
 
 
 # In[48]:
@@ -128,10 +133,10 @@ data_cleaned[datetime_col] = pd.to_datetime(data_cleaned[datetime_col])
 
 
 
-# In[51]:
 
 
-data_cleaned
+
+
 
 
 # In[52]:
