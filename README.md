@@ -1,37 +1,48 @@
 # Project-3-Mahshid-
 
 
-Weather Forecasting Project
+###Weather Forecasting Project
 
-Overview
+##Overview
 
-Weather and temperature is not only an important for individual everyday life, but is also relevant to many other topics such as climate change. Studies from other researchers have shown promising results of using neural networks for predicting and future weather and/or temperature. This project creates a Long Short Term Memory model to predict future temperature. The model takes in historical weather information, the air temperature, and predicts future temperatures. 
+Weather and temperature is not only an important for individual everyday life, but is also relevant to many other topics such as climate change. Studies from other researchers have shown promising results of using neural networks for predicting and future weather and/or temperature. This project creates a Long Short Term Memory model to predict future temperature, whihc in this case are 7 days out from the last date of dataframe, 2017-10-28.
 
-
-Introduction
+##Data Description
 
 
 The original data consists of hourly temperatures for Vancouver spanning 5 years, from 2012 to 2017. To predict the daily temperature for the next 7 days, I resampled the data to daily averages. I then split the dataset into training and testing sets, using an 80/20 split based on time: the first 4 years were used for training, and the last year was used for testing.
+
+![image](https://github.com/user-attachments/assets/f8cd4436-339b-4b85-b234-568c261a2e91)
+
+Data Cleaning and Preparation
+
+The following steps were performed to clean and prepare the data:
+
+  - Dropped all the cities except Vancouver from the dataset.
+  - Dropped all rows with missing values (NANs).
+  - Converted temperature values from Kelvin to Celsius using the formula:
+  - Celsius = Kelvin − 273.15                      Celsius=Kelvin−273.15
+
+##Model Description
 
 I employed an LSTM model to predict the temperature for the following day using the previous 15 days' temperatures as input features. The model was trained on 4 years of data and achieved an R² score of 93%.
 
 To forecast the temperature for the next 7 days, the model must be run recursively. This involves predicting the temperature for the next day, then appending the predicted value to the feature set and using it for the subsequent day's prediction. As the model progresses through the 7-day forecast, the quality of predictions deteriorates because each prediction relies on previous predictions rather than actual values. Consequently, this type of model is best suited for short-term forecasts, typically up to a few days ahead.
 
-![image](https://github.com/user-attachments/assets/f8cd4436-339b-4b85-b234-568c261a2e91)
-
-
 ![image](https://github.com/user-attachments/assets/bab1d6b9-be93-4024-bbbd-4b44f37d5dd9)
 
 
+#Gradio Interface
 
+A Gradio interface is used to provide an interactive web interface for temperature prediction. Users can input a date, and the interface will display the forecasted temperature in Celsius.
 
 
 The temperature values in dataset appear to be in Kelvin rather than Celsius or Fahrenheit. Kelvin is a unit of measurement for temperature where 0 K is absolute zero. 
 
-Cleaned the data and drop all cities and only kept one city,Vancouver and dropped all NANs
+Cleaned the data, dropped all the cities except Vancouver and dropped all NANs.
 
 converted Kelvin to Celsius: 
-![image](https://github.com/user-attachments/assets/b05c1328-cc51-4d20-8b24-f4aac9d44616)
+
 
 
 Feature Selection:
