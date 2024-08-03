@@ -5,7 +5,7 @@ Weather Forecasting Project
 
 Overview
 
-Weather and temperature is not only an important for individual everyday life, but is also relevant to many other topics such as climate change. Studies from other researchers have shown promising results of using neural networks for predicting and future weather and/or temperature. This project creates a Long Short Term Memory model to predict future temperature. The model takes in historical weather information such as air pressure and temperature and predicts future temperatures. 
+Weather and temperature is not only an important for individual everyday life, but is also relevant to many other topics such as climate change. Studies from other researchers have shown promising results of using neural networks for predicting and future weather and/or temperature. This project creates a Long Short Term Memory model to predict future temperature. The model takes in historical weather information, the air temperature, and predicts future temperatures. 
 
 
 Introduction
@@ -17,6 +17,10 @@ I employed an LSTM model to predict the temperature for the following day using 
 
 To forecast the temperature for the next 7 days, the model must be run recursively. This involves predicting the temperature for the next day, then appending the predicted value to the feature set and using it for the subsequent day's prediction. As the model progresses through the 7-day forecast, the quality of predictions deteriorates because each prediction relies on previous predictions rather than actual values. Consequently, this type of model is best suited for short-term forecasts, typically up to a few days ahead.
 
+![image](https://github.com/user-attachments/assets/f8cd4436-339b-4b85-b234-568c261a2e91)
+
+
+![image](https://github.com/user-attachments/assets/bab1d6b9-be93-4024-bbbd-4b44f37d5dd9)
 
 
 
@@ -40,6 +44,7 @@ Hyperparameter Tuning:
 You might need to experiment with the number of LSTM units, epochs, batch size, or other hyperparameters to optimize model performance.
 Feature Engineering:
 If you find that the date and hour features do not contribute significantly to the predictions, consider excluding them or transforming them differently.
+![Snip20240803_12](https://github.com/user-attachments/assets/cb204402-3b34-44e5-be60-fe9764016ddd)
 
 
 
