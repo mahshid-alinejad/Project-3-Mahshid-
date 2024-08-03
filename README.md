@@ -41,7 +41,6 @@ You might need to experiment with the number of LSTM units, epochs, batch size, 
 Feature Engineering:
 If you find that the date and hour features do not contribute significantly to the predictions, consider excluding them or transforming them differently.
 
-![Snip20240802_8](https://github.com/user-attachments/assets/dadedc87-d784-4db9-ab03-fe5c0af5d086)
 
 
 
